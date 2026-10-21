@@ -1,0 +1,6 @@
+# Bluecrux Brand Library: internal portal, keep out of search engines.
+# Primary noindex signal. Applies to every response (HTML, images, video, PDF),
+# unlike the <meta name="robots"> tag which only covers HTML pages.
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, noimageindex"
+</IfModule>

@@ -1,6 +1,11 @@
 # Bluecrux Brand Library: internal brand portal, not meant for search engines
-# or AI training crawlers. The X-Robots-Tag header (.htaccess) is the primary
-# noindex signal; this file additionally blocks compliant crawlers outright.
+# or AI training crawlers. The X-Robots-Tag header (.htaccess) and the
+# <meta name="robots" content="noindex"> tag are the noindex signals.
+#
+# Search engines are deliberately NOT disallowed here: Google only honours
+# noindex if it is allowed to fetch the page. A blanket Disallow would hide the
+# noindex and let Google list the bare URL anyway if someone links to it.
+# AI / scraping bots are blocked outright since they ignore noindex.
 
 # AI / LLM training and scraping bots
 User-agent: GPTBot
@@ -51,6 +56,6 @@ Disallow: /
 User-agent: cohere-ai
 Disallow: /
 
-# Everyone else, search engines included
+# Everyone else (search engines): crawl allowed so the noindex is seen.
 User-agent: *
-Disallow: /
+Allow: /
