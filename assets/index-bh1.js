@@ -131,6 +131,8 @@ const __data = (() => {
 
   /** Design SharePoint site — collections open here until folder-level URLs are provided. */
   const SHAREPOINT_DESIGN_SITE = 'https://upcbe1046076.sharepoint.com/sites/BC_40Marketing';
+  /** TODO: replace with the direct share link to the Graphic charter v4 PDF. */
+  downloadLinks['Graphic charter v4.pdf'] = SHAREPOINT_DESIGN_SITE;
   const imageryCollections = [{
     id: 'photo-all',
     title: 'Photography — all',
@@ -1008,9 +1010,52 @@ const __app = (() => {
   };
   const EXTERNAL_MEDIA_REFERRER = 'strict-origin-when-cross-origin';
 
-  /** Same-tab → Monday WorkForms (Brand & Design request intake). */
-  function openRequestForm() {
-    window.open(MONDAY_REQUEST_FORM_URL, '_blank', 'noopener,noreferrer');
+  /** Resolve the SharePoint URL behind a named download (undefined = not linked yet). */
+  function resolveDownloadHref(name, url) {
+    return url ?? downloadLinks[name] ?? (name === 'PowerPoint master v4' ? SHAREPOINT_PPT_MASTER : undefined);
+  }
+  /** External URL a library item opens, if it is a linked download. */
+  function itemHref(item) {
+    return item.action === 'Download' ? resolveDownloadHref(item.title, item.downloadUrl) : undefined;
+  }
+  /**
+   * External links render as real <a target="_blank"> anchors: never popup-blocked,
+   * work in sandboxed frames, support middle-click / copy link. Falls back to a
+   * <button> when there is no href (e.g. downloads not linked yet).
+   */
+  function ActionLink({
+    href,
+    className,
+    disabled,
+    onClick,
+    children,
+    ...rest
+  }) {
+    if (href) {
+      return React.createElement('a', {
+        ...rest,
+        className: `bx-link${className ? ` ${className}` : ''}`,
+        href,
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        'aria-disabled': disabled || undefined,
+        tabIndex: disabled ? -1 : undefined,
+        onClick: event => {
+          if (disabled) {
+            event.preventDefault();
+            return;
+          }
+          if (onClick) onClick(event);
+        }
+      }, children);
+    }
+    return React.createElement('button', {
+      type: 'button',
+      ...rest,
+      className,
+      disabled,
+      onClick
+    }, children);
   }
   function Logo({
     className = ''
@@ -1221,9 +1266,9 @@ const __app = (() => {
     const slideStack = item.id === 'powerpoint-v4' ? MASTER_STACK_SOURCES : item.id === 'proposal-template' ? PROPOSAL_STACK_SOURCES : null;
     return /*#__PURE__*/React.createElement("article", {
       className: `asset-card${isMaster ? ' asset-card--master' : ''}`
-    }, /*#__PURE__*/React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(ActionLink, {
       className: "asset-card-hit",
-      type: "button",
+      href: itemHref(item),
       onClick: () => open(item)
     }, /*#__PURE__*/React.createElement("span", {
       className: "asset-visual"
@@ -1264,9 +1309,9 @@ const __app = (() => {
       className: "asset-meta"
     }, item.meta)))), isMaster && /*#__PURE__*/React.createElement("div", {
       className: "asset-master-actions"
-    }, /*#__PURE__*/React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(ActionLink, {
       className: "chip-button chip-button--ink",
-      type: "button",
+      href: itemHref(item),
       onClick: () => open(item)
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 13
@@ -1420,9 +1465,9 @@ const __app = (() => {
       className: "featured-master-copy"
     }, /*#__PURE__*/React.createElement("h2", null, "PowerPoint master v4"), /*#__PURE__*/React.createElement("p", null, "Cover, framework, statement. Download the current file."), /*#__PURE__*/React.createElement("div", {
       className: "featured-master-actions"
-    }, /*#__PURE__*/React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(ActionLink, {
       className: "chip-button chip-button--ink",
-      type: "button",
+      href: resolveDownloadHref('PowerPoint master v4'),
       onClick: () => download('PowerPoint master v4')
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 14
@@ -1441,9 +1486,9 @@ const __app = (() => {
       variant: 2
     }))), /*#__PURE__*/React.createElement("section", {
       className: "call-band"
-    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Not in the library?"), /*#__PURE__*/React.createElement("p", null, "Write what you need. It lands on the brand board.")), /*#__PURE__*/React.createElement("button", {
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Not in the library?"), /*#__PURE__*/React.createElement("p", null, "Write what you need. It lands on the brand board.")), /*#__PURE__*/React.createElement(ActionLink, {
       className: "chip-button",
-      onClick: openRequestForm
+      href: MONDAY_REQUEST_FORM_URL
     }, "Open a request ", /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
       size: 14
     }, thin)))));
@@ -1638,9 +1683,9 @@ const __app = (() => {
       className: "tutorial-switcher-soon"
     }, "Soon"), /*#__PURE__*/React.createElement(ChevronDown, _extends({
       size: 14
-    }, thin)))), /*#__PURE__*/React.createElement("button", {
+    }, thin)))), /*#__PURE__*/React.createElement(ActionLink, {
       className: "chip-button chip-button--ink",
-      type: "button",
+      href: resolveDownloadHref('PowerPoint master v4'),
       onClick: () => download('PowerPoint master v4')
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 14
@@ -1783,8 +1828,9 @@ const __app = (() => {
       className: "charter-copy"
     }, /*#__PURE__*/React.createElement("h2", null, "Logo, colour, type, icons."), /*#__PURE__*/React.createElement("ul", {
       className: "scan-list"
-    }, /*#__PURE__*/React.createElement("li", null, "Primary: blue-black, white, off-white"), /*#__PURE__*/React.createElement("li", null, "Secondary: sparingly, for diagrams"), /*#__PURE__*/React.createElement("li", null, "Type: Helvetica + Aptos Mono"), /*#__PURE__*/React.createElement("li", null, "Icons: Google Icons, thin weight")), /*#__PURE__*/React.createElement("button", {
+    }, /*#__PURE__*/React.createElement("li", null, "Primary: blue-black, white, off-white"), /*#__PURE__*/React.createElement("li", null, "Secondary: sparingly, for diagrams"), /*#__PURE__*/React.createElement("li", null, "Type: Helvetica + Aptos Mono"), /*#__PURE__*/React.createElement("li", null, "Icons: Google Icons, thin weight")), /*#__PURE__*/React.createElement(ActionLink, {
       className: "chip-button chip-button--ink",
+      href: resolveDownloadHref('Graphic charter v4.pdf'),
       onClick: () => download('Graphic charter v4.pdf')
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 14
@@ -2049,8 +2095,9 @@ const __app = (() => {
       className: "charter-copy"
     }, /*#__PURE__*/React.createElement("h2", null, "How Bluecrux writes."), /*#__PURE__*/React.createElement("ul", {
       className: "scan-list"
-    }, /*#__PURE__*/React.createElement("li", null, "Focused \xB7 Approachable \xB7 Simple"), /*#__PURE__*/React.createElement("li", null, "Build lines: moment \u2192 friction \u2192 change \u2192 landing"), /*#__PURE__*/React.createElement("li", null, "Prefer facts and outcomes over claims")), /*#__PURE__*/React.createElement("button", {
+    }, /*#__PURE__*/React.createElement("li", null, "Focused \xB7 Approachable \xB7 Simple"), /*#__PURE__*/React.createElement("li", null, "Build lines: moment \u2192 friction \u2192 change \u2192 landing"), /*#__PURE__*/React.createElement("li", null, "Prefer facts and outcomes over claims")), /*#__PURE__*/React.createElement(ActionLink, {
       className: "chip-button chip-button--ink",
+      href: resolveDownloadHref('Verbal charter v1.pdf'),
       onClick: () => download('Verbal charter v1.pdf')
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 14
@@ -2265,7 +2312,8 @@ const __app = (() => {
       referrerPolicy: EXTERNAL_MEDIA_REFERRER
     }), variant.mark === 'monogram' ? /*#__PURE__*/React.createElement(Monogram, null) : /*#__PURE__*/React.createElement(Logo, null)), /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
       className: "mono-label"
-    }, variant.name), /*#__PURE__*/React.createElement("small", null, variant.files)), /*#__PURE__*/React.createElement("button", {
+    }, variant.name), /*#__PURE__*/React.createElement("small", null, variant.files)), /*#__PURE__*/React.createElement(ActionLink, {
+      href: resolveDownloadHref(`${variant.name} logo`),
       onClick: () => download(`${variant.name} logo`)
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 13
@@ -2312,7 +2360,8 @@ const __app = (() => {
       alt: ""
     })), /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
       className: "mono-label"
-    }, brand.name), /*#__PURE__*/React.createElement("small", null, brand.files)), /*#__PURE__*/React.createElement("button", {
+    }, brand.name), /*#__PURE__*/React.createElement("small", null, brand.files)), /*#__PURE__*/React.createElement(ActionLink, {
+      href: resolveDownloadHref(`${brand.name} logo`),
       onClick: () => download(`${brand.name} logo`)
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 13
@@ -2361,9 +2410,6 @@ const __app = (() => {
       }, /*#__PURE__*/React.createElement(Logo, null));
     })))))));
   }
-  function openExternal(url) {
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }
   function ImageryPage() {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageIntro, {
       title: "Imagery.",
@@ -2390,16 +2436,14 @@ const __app = (() => {
       className: "mono-label"
     }, item.meta), /*#__PURE__*/React.createElement("h3", null, item.title), /*#__PURE__*/React.createElement("p", null, item.description), /*#__PURE__*/React.createElement("div", {
       className: "imagery-card-actions"
-    }, /*#__PURE__*/React.createElement("button", {
+    }, /*#__PURE__*/React.createElement(ActionLink, {
       className: "chip-button chip-button--ink",
-      type: "button",
-      onClick: () => openExternal(item.sharePointUrl)
+      href: item.sharePointUrl
     }, "Open in SharePoint ", /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
       size: 13
-    }, thin))), item.youtubeUrl && /*#__PURE__*/React.createElement("button", {
+    }, thin))), item.youtubeUrl && /*#__PURE__*/React.createElement(ActionLink, {
       className: "text-button text-button--mark",
-      type: "button",
-      onClick: () => openExternal(item.youtubeUrl)
+      href: item.youtubeUrl
     }, "Brand film on YouTube ", /*#__PURE__*/React.createElement(ArrowRight, _extends({
       size: 14
     }, thin)))))))));
@@ -2503,10 +2547,7 @@ const __app = (() => {
     openBrand
   }) {
     const runLink = link => {
-      if (link.href) {
-        window.open(link.href, '_blank', 'noopener,noreferrer');
-        return;
-      }
+      if (link.href) return; // handled natively by the <a href>
       if (link.brandTab) {
         openBrand(link.brandTab);
         return;
@@ -2529,10 +2570,10 @@ const __app = (() => {
       className: "faq-body"
     }, /*#__PURE__*/React.createElement("h2", null, item.question), /*#__PURE__*/React.createElement("p", null, item.answer), item.links && item.links.length > 0 && /*#__PURE__*/React.createElement("div", {
       className: "faq-links"
-    }, item.links.map(link => /*#__PURE__*/React.createElement("button", {
+    }, item.links.map(link => /*#__PURE__*/React.createElement(ActionLink, {
       key: `${item.id}-${link.label}`,
-      type: "button",
       className: "text-button",
+      href: link.href,
       onClick: () => runLink(link)
     }, link.label, " ", /*#__PURE__*/React.createElement(ArrowRight, _extends({
       size: 14
@@ -2614,7 +2655,7 @@ const __app = (() => {
         title: 'Request a task',
         label: 'Monday',
         haystack: 'request task ask brand team monday',
-        run: openRequestForm
+        href: MONDAY_REQUEST_FORM_URL
       }, {
         id: 'page-logos',
         title: 'Logos',
@@ -2657,6 +2698,7 @@ const __app = (() => {
         title: item.title,
         label: sectionLabels[item.section],
         haystack: `${item.title} ${item.description} ${sectionLabels[item.section]} ${item.templateKind ?? ''} ${item.action}`,
+        href: itemHref(item),
         run: () => openItem(item)
       }));
       return [...pages, ...items];
@@ -2693,7 +2735,7 @@ const __app = (() => {
       return scored;
     }, [entries, query, results.length]);
     const runAndClose = run => {
-      run();
+      if (run) run();
       close();
     };
     return /*#__PURE__*/React.createElement("div", {
@@ -2729,8 +2771,9 @@ const __app = (() => {
       className: "mono-label"
     }, query ? `${results.length} result${results.length === 1 ? '' : 's'}` : 'Start here'), results.length > 0 ? /*#__PURE__*/React.createElement("div", {
       className: "search-results"
-    }, results.slice(0, 8).map((item, index) => /*#__PURE__*/React.createElement("button", {
+    }, results.slice(0, 8).map((item, index) => /*#__PURE__*/React.createElement(ActionLink, {
       key: item.id,
+      href: item.href,
       onClick: () => runAndClose(item.run),
       disabled: closing
     }, /*#__PURE__*/React.createElement("span", null, String(index + 1).padStart(2, '0')), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("small", null, item.label), /*#__PURE__*/React.createElement("h3", null, item.title)), /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
@@ -2743,16 +2786,17 @@ const __app = (() => {
       className: "search-suggest"
     }, /*#__PURE__*/React.createElement("span", {
       className: "mono-label"
-    }, "Did you mean"), suggestions.map(item => /*#__PURE__*/React.createElement("button", {
+    }, "Did you mean"), suggestions.map(item => /*#__PURE__*/React.createElement(ActionLink, {
       key: item.id,
-      type: "button",
+      href: item.href,
       onClick: () => runAndClose(item.run),
       disabled: closing
     }, /*#__PURE__*/React.createElement("small", null, item.label), /*#__PURE__*/React.createElement("strong", null, item.title)))), /*#__PURE__*/React.createElement("p", {
       className: "search-empty-hint"
-    }, "Try a shorter word, or open a request.")), /*#__PURE__*/React.createElement("button", {
+    }, "Try a shorter word, or open a request.")), /*#__PURE__*/React.createElement(ActionLink, {
       className: "text-button",
-      onClick: () => runAndClose(openRequestForm),
+      href: MONDAY_REQUEST_FORM_URL,
+      onClick: close,
       disabled: closing
     }, "Not here? Open a request ", /*#__PURE__*/React.createElement(ArrowRight, _extends({
       size: 14
@@ -2919,9 +2963,9 @@ const __app = (() => {
       disabled: closing
     }, "Search ", /*#__PURE__*/React.createElement(Search, _extends({
       size: 13
-    }, thin))), /*#__PURE__*/React.createElement("button", {
+    }, thin))), /*#__PURE__*/React.createElement(ActionLink, {
       className: "chip-button",
-      onClick: openRequestForm,
+      href: MONDAY_REQUEST_FORM_URL,
       disabled: closing
     }, "Request a task ", /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
       size: 13
@@ -3004,9 +3048,9 @@ const __app = (() => {
       if (searchOpen) closeSearch();
     };
     const download = (name, url) => {
-      const href = url ?? downloadLinks[name] ?? (name === 'PowerPoint master v4' ? SHAREPOINT_PPT_MASTER : undefined);
+      const href = resolveDownloadHref(name, url);
       if (href) {
-        window.open(href, '_blank', 'noopener,noreferrer');
+        // Navigation happens via the <a href> that was clicked; just confirm.
         setToast(`${name} · opening SharePoint`);
         window.setTimeout(() => setToast(''), 2800);
         return;
@@ -3073,9 +3117,9 @@ const __app = (() => {
       onClick: openSearch
     }, "Search ", /*#__PURE__*/React.createElement(Search, _extends({
       size: 13
-    }, thin))), /*#__PURE__*/React.createElement("button", {
+    }, thin))), /*#__PURE__*/React.createElement(ActionLink, {
       className: "header-link header-link--underline header-link--request",
-      onClick: openRequestForm
+      href: MONDAY_REQUEST_FORM_URL
     }, "Request a task"), /*#__PURE__*/React.createElement("button", {
       className: "header-link",
       onClick: openMenu
@@ -3110,8 +3154,8 @@ const __app = (() => {
       className: "footer-brand"
     }, /*#__PURE__*/React.createElement(Logo, null), /*#__PURE__*/React.createElement("span", {
       className: "brand-tag"
-    }, "/ Brand library")), /*#__PURE__*/React.createElement("p", null, "Internal use only \xB7 Graphic charter v4 \xB7 Verbal charter v1")), /*#__PURE__*/React.createElement("button", {
-      onClick: openRequestForm
+    }, "/ Brand library")), /*#__PURE__*/React.createElement("p", null, "Internal use only \xB7 Graphic charter v4 \xB7 Verbal charter v1")), /*#__PURE__*/React.createElement(ActionLink, {
+      href: MONDAY_REQUEST_FORM_URL
     }, "Contact the brand team ", /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
       size: 14
     }, thin)))), searchOpen && /*#__PURE__*/React.createElement(SearchOverlay, {
