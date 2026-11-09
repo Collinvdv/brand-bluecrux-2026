@@ -1,5 +1,4 @@
 (function(){
-function __R(p){ return String(p).replace(/^app\/photos\//,'media/photos/').replace(/^app\//,''); }
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /* Bluecrux Brand Library — converted from brand-hub (React + Vite). Source: src-orig/ */
 const {
@@ -89,7 +88,7 @@ function HeroVideo({
   }, []);
   return /*#__PURE__*/React.createElement("video", {
     ref: ref,
-    src: 'media/video/homepage-video.mp4',
+    src: "media/video/homepage-video.mp4",
     autoPlay: true,
     loop: true,
     muted: true,
@@ -110,7 +109,9 @@ const __data = (() => {
   const MONDAY_REQUEST_FORM_URL = String(undefined ?? '').trim() || DEFAULT_MONDAY_REQUEST_FORM_URL;
 
   /** Live external links — SharePoint (tenant login) + YouTube. */
-  const SHAREPOINT_PPT_MASTER = 'https://upcbe1046076.sharepoint.com/:p:/s/BC_40Marketing/IQB5oU8LuyBjSJp2wxTbtkm9ARPCzNjweRA5OcqYjJw3_qs?e=0rs64k';
+  const SHAREPOINT_PPT_MASTER = 'https://upcbe1046076.sharepoint.com/sites/BC_20.Thatsus/_layouts/15/download.aspx?UniqueId=defe250a-2a3e-482d-be5b-0ea13e2a5263';
+  const SHAREPOINT_BRAND_GUIDE = 'https://upcbe1046076.sharepoint.com/sites/BC_20.Thatsus/_layouts/15/download.aspx?SourceUrl=%2Fsites%2FBC_20.Thatsus%2FShared%20Documents%2F20.Sales%20and%20Marketing%2F20.%20Branding%2F10.%20Brand%20guide%2FBluecrux%20Brand%20Guide%202026.pdf';
+  const SHAREPOINT_VERBAL_GUIDE = 'https://upcbe1046076.sharepoint.com/sites/BC_20.Thatsus/_layouts/15/download.aspx?UniqueId=4088bc54-76bf-4358-9d25-d6e722d2eb61';
   const YOUTUBE_BRAND_FILM_ID = 'l5Ij7nUy9UQ';
   function youtubeEmbedSrc(id, opts) {
     const autoplay = opts?.autoplay ? '1' : '0';
@@ -126,44 +127,39 @@ const __data = (() => {
   /** Resolve a download button label / library title to an external URL. */
   const downloadLinks = {
     'PowerPoint master v4': SHAREPOINT_PPT_MASTER,
-    'PowerPoint master v4.pptx': SHAREPOINT_PPT_MASTER
+    'PowerPoint master v4.pptx': SHAREPOINT_PPT_MASTER,
+    'Graphic charter v4.pdf': SHAREPOINT_BRAND_GUIDE,
+    'Verbal charter v1.pdf': SHAREPOINT_VERBAL_GUIDE
   };
 
   /** Design SharePoint site — collections open here until folder-level URLs are provided. */
   const SHAREPOINT_DESIGN_SITE = 'https://upcbe1046076.sharepoint.com/sites/BC_40Marketing';
-  /** TODO: replace with the direct share link to the Graphic charter v4 PDF. */
-  downloadLinks['Graphic charter v4.pdf'] = SHAREPOINT_DESIGN_SITE;
   const imageryCollections = [{
-    id: 'photo-all',
-    title: 'Photography — all',
-    description: 'Approved stills for decks and internal use. Browse and download in Design SharePoint.',
+    id: 'headshots',
+    image: 'media/photos/headshots-2.jpg',
+    title: 'Headshots',
+    description: 'Cropped employee headshots to use in decks and other designs.',
     meta: 'SharePoint · Design',
-    sharePointUrl: SHAREPOINT_DESIGN_SITE,
+    sharePointUrl: 'https://upcbe1046076.sharepoint.com/:f:/r/sites/BC_20.Thatsus/Shared%20Documents/10.HR%20General/20.%20BeeCees%20-%20General%20information/10.%20Indiv%20pictures/2026/Headshot-cropped?d=w36838ef99be6402e85f8deb8bdc35889&csf=1&web=1&e=djU2gQ',
     accent: '#000021'
   }, {
-    id: 'photo-events',
-    title: 'Events & people',
-    description: 'Gatherings, workshops, faces. Confirm rights before external publish.',
+    id: 'event',
+    image: 'media/photos/photo-06.jpg',
+    title: 'Gallery',
+    description: 'Photos of our people and events.',
     meta: 'SharePoint · Design',
-    sharePointUrl: SHAREPOINT_DESIGN_SITE,
+    sharePointUrl: 'https://upcbe1046076.sharepoint.com/:f:/r/sites/BC_20.Thatsus/Shared%20Documents/80.Pictures?d=wb146fb11780d4a9a8021e11d69305f66&csf=1&web=1&e=UJ5RTu',
     accent: '#717BEE'
   }, {
-    id: 'photo-ops',
-    title: 'Operations & workplace',
-    description: 'Floors, labs, planning rooms — warm, documentary, less tech-aggressive.',
+    id: 'deck-material',
+    image: 'media/photos/photo-07.jpg',
+    title: 'Deck material',
+    description: 'Approved stock images for decks and other designs.',
     meta: 'SharePoint · Design',
-    sharePointUrl: SHAREPOINT_DESIGN_SITE,
+    sharePointUrl: 'https://upcbe1046076.sharepoint.com/sites/BC_40Marketing/Shared%20Documents/Forms/AllItems.aspx?d=waf0253cdf4eb4c5b831e046dbcb01f61&csf=1&web=1&e=clJQV8&ovuser=4b00b32c%2D2e45%2D4fda%2Da918%2D4c4e80cadebf%2Camu%2Eoch%40bluecrux%2Ecom&TeamsCID=e0d810bb%2D48dc%2D4d80%2D8d8d%2D9291651f95de&OR=Teams%2DHL&CT=1793284278064&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiI1MC8yNjEwMDIxMjAxMSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D&CID=f6a349a2%2D300e%2D0000%2D3541%2D10912410987d&cidOR=SPO&FolderCTID=0x012000EA21D807CCA40D4DB02DE742EA0737FF&id=%2Fsites%2FBC%5F40Marketing%2FShared%20Documents%2F30%2EMarketing%20Operations%2F110%2E%20Design%2FDesign%2FDigital%2Fpics',
     accent: '#D6EDA6'
-  }, {
-    id: 'motion',
-    title: 'Motion & brand film',
-    description: 'Approved motion lives with Design. Brand film also on YouTube when you need a quick share.',
-    meta: 'SharePoint · YouTube',
-    sharePointUrl: SHAREPOINT_DESIGN_SITE,
-    youtubeUrl: `https://www.youtube.com/watch?v=${YOUTUBE_BRAND_FILM_ID}`,
-    accent: '#FAF7F5'
   }];
-  const photos = [__R('app/photos/photo-01.jpg'), __R('app/photos/photo-02.jpg'), __R('app/photos/photo-03.jpg'), __R('app/photos/photo-04.jpg'), __R('app/photos/photo-05.jpg')];
+  const photos = ['media/photos/photo-01.jpg', 'media/photos/photo-02.jpg', 'media/photos/photo-03.jpg', 'media/photos/photo-04.jpg', 'media/photos/photo-05.jpg', 'media/photos/photo-06.jpg', 'media/photos/photo-07.jpg'];
   const videos = [{
     title: 'Brand film',
     filename: 'Brand-film.mp4',
@@ -197,7 +193,7 @@ const __data = (() => {
     id: 'powerpoint-v4',
     section: 'templates',
     templateKind: 'powerpoint',
-    title: 'PowerPoint master v4',
+    title: 'PowerPoint Master',
     description: 'Cover, framework, statement. Grid and type set.',
     meta: 'PPTX · SharePoint · JUL 2026',
     action: 'Download',
@@ -207,20 +203,22 @@ const __data = (() => {
     id: 'proposal-template',
     section: 'templates',
     templateKind: 'powerpoint',
-    title: 'Proposal deck',
+    title: 'Go-To-Market Decks',
     description: 'Brief, approach, team, price — in that order.',
     meta: 'PPTX · 28 MB · JUN 2026',
-    action: 'Download',
-    visual: 'slide'
+    action: 'Open now',
+    visual: 'slide',
+    downloadUrl: 'https://upcbe1046076.sharepoint.com/sites/MarketingHub/SitePages/Commercial-library.aspx'
   }, {
     id: 'document-template',
     section: 'templates',
     templateKind: 'word',
-    title: 'Business document',
+    title: 'Word template',
     description: 'Word styles for reports, notes and summaries.',
     meta: 'DOCX · 8 MB · MAY 2026',
     action: 'Download',
-    visual: 'doc'
+    visual: 'doc',
+    downloadUrl: 'https://upcbe1046076.sharepoint.com/sites/BC_20.Thatsus/_layouts/15/download.aspx?UniqueId=4d1a3293-c56a-49c5-925c-866eeb5914a9'
   }, {
     id: 'onepager-company',
     section: 'resources',
@@ -229,7 +227,7 @@ const __data = (() => {
     meta: 'PDF · 1.2 MB · JUL 2026',
     action: 'Download',
     visual: 'doc',
-    previewSources: [__R('app/brand/diagram-workload.png'), __R('app/brand/diagram-gains.png'), __R('app/docs/word-whitepaper.png')]
+    previewSources: ['brand/diagram-workload.png', 'brand/diagram-gains.png', 'docs/word-whitepaper.png']
   }, {
     id: 'onepager-value-chain',
     section: 'resources',
@@ -238,7 +236,7 @@ const __data = (() => {
     meta: 'PDF · 980 KB · JUL 2026',
     action: 'Download',
     visual: 'doc',
-    previewSources: [__R('app/brand/diagram-gains.png'), __R('app/brand/diagram-workload.png'), __R('app/docs/brochure-ops.png')]
+    previewSources: ['brand/diagram-gains.png', 'brand/diagram-workload.png', 'docs/brochure-ops.png']
   }, {
     id: 'brochure-solutions',
     section: 'resources',
@@ -247,7 +245,7 @@ const __data = (() => {
     meta: 'PDF · 4.8 MB · JUN 2026',
     action: 'Download',
     visual: 'doc',
-    previewSources: [__R('app/brand/diagram-workload.png'), __R('app/brand/diagram-gains.png'), __R('app/docs/whitepaper-lean-lab.png')]
+    previewSources: ['brand/diagram-workload.png', 'brand/diagram-gains.png', 'docs/whitepaper-lean-lab.png']
   }, {
     id: 'brochure-capabilities',
     section: 'resources',
@@ -256,7 +254,7 @@ const __data = (() => {
     meta: 'PDF · 6.1 MB · MAY 2026',
     action: 'Download',
     visual: 'doc',
-    previewSources: [__R('app/brand/diagram-workload.png'), __R('app/brand/diagram-gains.png'), __R('app/docs/brochure-ops.png')]
+    previewSources: ['brand/diagram-workload.png', 'brand/diagram-gains.png', 'docs/brochure-ops.png']
   }, {
     id: 'leavebehind-event',
     section: 'resources',
@@ -265,7 +263,7 @@ const __data = (() => {
     meta: 'PDF · 1.6 MB · JUN 2026',
     action: 'Download',
     visual: 'doc',
-    previewSources: [__R('app/brand/diagram-workload.png'), __R('app/brand/diagram-gains.png'), __R('app/docs/word-whitepaper.png')]
+    previewSources: ['brand/diagram-workload.png', 'brand/diagram-gains.png', 'docs/word-whitepaper.png']
   }, {
     id: 'whitepaper-ops',
     section: 'resources',
@@ -274,7 +272,7 @@ const __data = (() => {
     meta: 'PDF · 3.4 MB · APR 2026',
     action: 'Download',
     visual: 'doc',
-    previewSources: [__R('app/brand/diagram-gains.png'), __R('app/brand/diagram-workload.png'), __R('app/docs/brochure-ops.png')]
+    previewSources: ['brand/diagram-gains.png', 'brand/diagram-workload.png', 'docs/brochure-ops.png']
   }, {
     id: 'visual-system',
     section: 'brand',
@@ -318,6 +316,7 @@ const __data = (() => {
   }];
   const sectionLabels = {
     templates: 'Templates',
+    decks: 'Decks',
     resources: 'Collateral',
     brand: 'Brand guidelines',
     media: 'Imagery'
@@ -354,18 +353,6 @@ const __data = (() => {
   }, {
     name: 'Sapin green',
     hex: '#0A4F52'
-  }, {
-    name: 'Baby pink',
-    hex: '#FAC4C7'
-  }, {
-    name: 'Green lemon',
-    hex: '#D6FF7D'
-  }, {
-    name: 'Yellow lemon',
-    hex: '#FAFF00'
-  }, {
-    name: 'Orange',
-    hex: '#FF7833'
   }];
   const colourRules = [{
     index: '01',
@@ -388,114 +375,43 @@ const __data = (() => {
     mute: false,
     controls: true
   });
+  const PPT_TUTORIAL_URL = 'https://upcbe1046076.sharepoint.com/:v:/s/BC_20.Thatsus/IQAO8tPBZKExTo4s0qp5_0IDAS9kJguuoUWmrgZqoGg9p9M?xsdata=MDV8MDJ8RGVuaXMuU2Nob2xsZW5AYmx1ZWNydXguY29tfGFhMmE0Yjc5NjdiNTQyMGE4ZWJhMDhkZjIzYTdmZjhkfDRiMDBiMzJjMmU0NTRmZGFhOTE4NGM0ZTgwY2FkZWJmfDB8MHw2MzkyNjg4NzY2MDU3MDY3MzF8VW5rbm93bnxUV0ZwYkdac2IzZDhleUpGYlhCMGVVMWhjR2tpT25SeWRXVXNJbFlpT2lJd0xqQXVNREF3TUNJc0lsQWlPaUpYYVc0ek1pSXNJa0ZPSWpvaVRXRnBiQ0lzSWxkVUlqb3lmUT09fDB8fHw%3d&sdata=TGJzYWd3Q1J3azNMS0o2UU5aMkhpeFpQNkUwR1VwTUY1TzBRSzN0Q0VTVT0%3d';
   const tutorials = [{
     id: 'deck-overview',
     index: '01',
-    title: 'Deck overview',
+    title: 'PowerPoint Template Introduction & Best Practices',
     subtitle: 'How the master works',
     description: 'General overview of the PowerPoint master — cover, framework, and statement layouts.',
     duration: '~4 min',
     typeLabel: 'Walkthrough',
-    videoSrc: pptVideo,
+    videoSrc: PPT_TUTORIAL_URL,
+    sharepoint: true,
     primary: true,
-    takeaways: ['Open a new file from the master — never copy last week’s deck.', 'One point per slide. Title carries the claim.', 'Use New Slide layouts. Hand-drawn text boxes break the grid.'],
+    takeaways: ['Start from a filled slide in the template, not an empty one. It shows density and fit.', 'Empty placeholders are invisible in full screen. Reset (Home, Slide) restores a slide.', 'Arial Nova for titles and text, Aptos Mono for labels. Colours come from the latest template theme only.', 'Bullets come from list levels (Tab, Shift+Tab), never hand-made.', 'Paste with Keep text only to stay on brand.'],
     practices: [{
       index: '01',
-      title: 'Start from the master',
-      copy: 'Copied slides bring old fonts and colours.'
+      title: 'Start from a filled slide',
+      copy: 'Compare its density with your content. Use New Slide for an empty version of the same layout.'
     }, {
       index: '02',
-      title: 'One point per slide',
-      copy: 'Body only carries evidence.'
+      title: 'Save the template as .potx',
+      copy: 'File, Save as PowerPoint Template, then pin it in Custom Office Templates.'
     }, {
       index: '03',
-      title: 'Layouts hold the grid',
-      copy: 'Add slides with New Slide, not free boxes.'
+      title: 'Theme fonts and colours only',
+      copy: 'Take colours from Shape Fill, theme colours of the latest deck. Ignore standard and recent colours.'
     }, {
       index: '04',
-      title: 'Give the eye a rest',
-      copy: 'Alternate dense slides with one full-frame idea.'
-    }]
-  }, {
-    id: 'proposal-narrative',
-    index: '02',
-    title: 'Proposal narrative',
-    subtitle: 'Client proposal flow',
-    description: 'Placeholder — how to assemble a client proposal from the master layouts. Video still in production.',
-    duration: 'Soon',
-    typeLabel: 'Placeholder',
-    videoSrc: null,
-    takeaways: ['Start from the proposal layout set, not a blank slide.', 'Keep the claim on the title; proof stays in the body.', 'Match section rhythm to the client story, not the old deck order.'],
-    practices: [{
-      index: '01',
-      title: 'Pick the right layouts',
-      copy: 'Cover, agenda, proof, close — stay inside the set.'
+      title: 'Use list levels',
+      copy: 'Increase or decrease list level instead of drawing bullets. Reset keeps them intact.'
     }, {
-      index: '02',
-      title: 'One claim per beat',
-      copy: 'Each slide advances one argument.'
+      index: '05',
+      title: 'Paste text only',
+      copy: 'Right-click, Keep text only. Change case from Home, Font.'
     }, {
-      index: '03',
-      title: 'Reuse, don’t rebuild',
-      copy: 'Duplicate layouts; don’t redraw boxes.'
-    }, {
-      index: '04',
-      title: 'Close clean',
-      copy: 'End on next step, not a wall of logos.'
-    }]
-  }, {
-    id: 'charts-data',
-    index: '03',
-    title: 'Charts & data slides',
-    subtitle: 'Data storytelling',
-    description: 'Placeholder — using chart and diagram layouts without breaking the grid. Video still in production.',
-    duration: 'Soon',
-    typeLabel: 'Placeholder',
-    videoSrc: null,
-    takeaways: ['Prefer built-in chart layouts over pasted screenshots.', 'One visual idea per slide — annotate, don’t decorate.', 'Keep secondary colour for meaning, not fill.'],
-    practices: [{
-      index: '01',
-      title: 'Use the chart layouts',
-      copy: 'They already hold type and spacing.'
-    }, {
-      index: '02',
-      title: 'Label what matters',
-      copy: 'Highlight the insight, not every data point.'
-    }, {
-      index: '03',
-      title: 'Colour explains',
-      copy: 'Secondary colours mark plans and series — not accents.'
-    }, {
-      index: '04',
-      title: 'Crop with intent',
-      copy: 'If a chart needs a legend wall, simplify first.'
-    }]
-  }, {
-    id: 'ai-for-brand',
-    index: '04',
-    title: 'How to use AI for Brand',
-    subtitle: 'AI with brand guardrails',
-    description: 'Practical guidance for drafting with ChatGPT while staying on Bluecrux voice, assets, and approvals. Pair with the AI library for the copy engine.',
-    duration: '~5 min',
-    typeLabel: 'Guide',
-    videoSrc: null,
-    takeaways: ['Feed the brief: audience, channel, one claim, and a short fact list — never invent floors, labs, or results.', 'Ask AI to draft options; you choose the line that sounds like a colleague on the floor.', 'Lock logo, colour, type, and final client language with the brand team — AI does not approve brand.'],
-    practices: [{
-      index: '01',
-      title: 'Brief before you prompt',
-      copy: 'State channel, audience, one claim, and verified facts. Paste Tone of voice rules when the draft must sound Bluecrux.'
-    }, {
-      index: '02',
-      title: 'Use ChatGPT for drafts',
-      copy: 'Outlines, variants, shortening, and plain-language rewrites. Keep Focused · Approachable · Simple — cut adjective stacks and AI filler.'
-    }, {
-      index: '03',
-      title: 'Escalate to brand',
-      copy: 'New campaigns, client-facing decks, logo misuse questions, imagery rights, and anything that sets a lasting pattern.'
-    }, {
-      index: '04',
-      title: 'Do / don’t',
-      copy: 'Do fact-check and read aloud. Don’t paste confidential client data, invent case results, or ship AI visuals as brand assets.'
+      index: '06',
+      title: 'Edit, don’t redraw',
+      copy: 'Ctrl+Shift drag duplicates blocks on an axis. Charts: right-click, Edit Data. Icons live at the end of the file.'
     }]
   }];
   return {
@@ -997,65 +913,63 @@ const __app = (() => {
     secondaryPalette,
     sectionLabels,
     SHAREPOINT_PPT_MASTER,
+    SHAREPOINT_DESIGN_SITE,
     templateKindLabels,
     tutorials,
     YOUTUBE_BRAND_FILM_ID
   } = __data;
   const Training = __training.default;
-  /** TODO: replace with the live custom GPT / copy engine URL */
-  const COPY_ENGINE_URL = '#';
+  const COPY_ENGINE_URL = 'https://chatgpt.com/g/g-6a461a23a8c881a4af6a93146cb5f8df-bluecrux-copy-engine-v2';
   const AI_BRAND_CONSTRAINTS = 'Bluecrux brand: blue-black ink #000021, paper #FAF7F5, salvia #717BEE and pistachio #D6EDA6 as accents only. Warm, human, less tech-aggressive. No purple neon glow, no cyberpunk HUD, no glassmorphism spam. English UI labels if any text appears.';
   const thin = {
     strokeWidth: 1.25
   };
   const EXTERNAL_MEDIA_REFERRER = 'strict-origin-when-cross-origin';
 
-  /** Resolve the SharePoint URL behind a named download (undefined = not linked yet). */
-  function resolveDownloadHref(name, url) {
-    return url ?? downloadLinks[name] ?? (name === 'PowerPoint master v4' ? SHAREPOINT_PPT_MASTER : undefined);
-  }
-  /** External URL a library item opens, if it is a linked download. */
-  function itemHref(item) {
-    return item.action === 'Download' ? resolveDownloadHref(item.title, item.downloadUrl) : undefined;
-  }
-  /**
-   * External links render as real <a target="_blank"> anchors: never popup-blocked,
-   * work in sandboxed frames, support middle-click / copy link. Falls back to a
-   * <button> when there is no href (e.g. downloads not linked yet).
-   */
-  function ActionLink({
+  /** Same-tab → Monday WorkForms (Brand & Design request intake). */
+  const resolveHref = (name, url) => url ?? downloadLinks[name] ?? (name === 'PowerPoint master v4' ? SHAREPOINT_PPT_MASTER : undefined);
+  function ExtLink({
     href,
-    className,
-    disabled,
-    onClick,
+    className = '',
     children,
     ...rest
   }) {
-    if (href) {
-      return React.createElement('a', {
-        ...rest,
-        className: `bx-link${className ? ` ${className}` : ''}`,
-        href,
-        target: '_blank',
-        rel: 'noopener noreferrer',
-        'aria-disabled': disabled || undefined,
-        tabIndex: disabled ? -1 : undefined,
-        onClick: event => {
-          if (disabled) {
-            event.preventDefault();
-            return;
-          }
-          if (onClick) onClick(event);
-        }
-      }, children);
-    }
-    return React.createElement('button', {
-      type: 'button',
-      ...rest,
-      className,
-      disabled,
-      onClick
+    return /*#__PURE__*/React.createElement("a", _extends({
+      href: href,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      className: ('ext ' + className).trim()
+    }, rest), children);
+  }
+  function RequestLink({
+    className,
+    children
+  }) {
+    return /*#__PURE__*/React.createElement(ExtLink, {
+      href: MONDAY_REQUEST_FORM_URL,
+      className: className
     }, children);
+  }
+  function DlLink({
+    name,
+    download,
+    className,
+    children
+  }) {
+    const href = resolveHref(name);
+    if (href) return /*#__PURE__*/React.createElement(ExtLink, {
+      href: href,
+      className: className,
+      onClick: () => download(name, undefined, true)
+    }, children);
+    return /*#__PURE__*/React.createElement("button", {
+      type: "button",
+      className: className,
+      onClick: () => download(name)
+    }, children);
+  }
+  function openRequestForm() {
+    window.open(MONDAY_REQUEST_FORM_URL, '_blank', 'noopener,noreferrer');
   }
   function Logo({
     className = ''
@@ -1173,13 +1087,12 @@ const __app = (() => {
     home: 'Home',
     library: 'Resources',
     templates: 'Templates',
+    decks: 'Decks',
     resources: 'Collateral',
     brand: 'Brand guidelines',
     media: 'Imagery',
     powerpoint: 'Tutorial',
-    faq: 'FAQ',
-    ai: 'AI library',
-    tools: 'Tools'
+    faq: 'FAQ'
   };
   function CtaLine({
     children
@@ -1191,12 +1104,12 @@ const __app = (() => {
     }, thin)));
   }
   const MASTER_SLIDE_IMAGES = {
-    0: __R('app/slides/master-cover-pillars.png'),
-    1: __R('app/slides/master-numbers.png'),
-    2: __R('app/slides/master-perspective.png'),
-    3: __R('app/slides/master-bringing-together.png'),
-    4: __R('app/slides/master-cover-white.png'),
-    5: __R('app/slides/master-cover-dark.png')
+    0: 'slides/master-cover-pillars.png',
+    1: 'slides/master-numbers.png',
+    2: 'slides/master-perspective.png',
+    3: 'slides/master-bringing-together.png',
+    4: 'slides/master-cover-white.png',
+    5: 'slides/master-cover-dark.png'
   };
   function TemplatePreview({
     variant = 0
@@ -1212,10 +1125,10 @@ const __app = (() => {
 
   /** Shared deck stack: back → front; hover peels the front layer (via CSS). */
   const MASTER_STACK_SOURCES = [MASTER_SLIDE_IMAGES[3], MASTER_SLIDE_IMAGES[1], MASTER_SLIDE_IMAGES[2], MASTER_SLIDE_IMAGES[0]];
-  const PROPOSAL_STACK_SOURCES = [__R('app/slides/ppt-value-chain-01.png'), __R('app/slides/master-perspective.png'), __R('app/slides/master-numbers.png')];
+  const PROPOSAL_STACK_SOURCES = ['slides/ppt-value-chain-01.png', 'slides/master-perspective.png', 'slides/master-numbers.png'];
 
   /** Front = Word cover; peeks = interior diagrams only (no Bluecrux cover lockups). */
-  const DOC_STACK_SOURCES = [__R('app/brand/diagram-workload.png'), __R('app/brand/diagram-gains.png'), __R('app/docs/word-whitepaper.png')];
+  const DOC_STACK_SOURCES = ['brand/diagram-workload.png', 'brand/diagram-gains.png', 'docs/word-whitepaper.png'];
   const HOME_SLIDES_STACK_SOURCES = [MASTER_SLIDE_IMAGES[2], MASTER_SLIDE_IMAGES[1], MASTER_SLIDE_IMAGES[0]];
   function PreviewStack({
     sources,
@@ -1252,7 +1165,7 @@ const __app = (() => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "accent-diagram"
     }, /*#__PURE__*/React.createElement("img", {
-      src: __R(__R('app/brand/diagram-workload.png')),
+      src: "brand/diagram-workload.png",
       alt: "Brand guide diagram: workload over time sine wave with blue to pistachio gradient"
     }))));
   }
@@ -1266,9 +1179,9 @@ const __app = (() => {
     const slideStack = item.id === 'powerpoint-v4' ? MASTER_STACK_SOURCES : item.id === 'proposal-template' ? PROPOSAL_STACK_SOURCES : null;
     return /*#__PURE__*/React.createElement("article", {
       className: `asset-card${isMaster ? ' asset-card--master' : ''}`
-    }, /*#__PURE__*/React.createElement(ActionLink, {
+    }, /*#__PURE__*/React.createElement("button", {
       className: "asset-card-hit",
-      href: itemHref(item),
+      type: "button",
       onClick: () => open(item)
     }, /*#__PURE__*/React.createElement("span", {
       className: "asset-visual"
@@ -1309,9 +1222,9 @@ const __app = (() => {
       className: "asset-meta"
     }, item.meta)))), isMaster && /*#__PURE__*/React.createElement("div", {
       className: "asset-master-actions"
-    }, /*#__PURE__*/React.createElement(ActionLink, {
+    }, /*#__PURE__*/React.createElement("button", {
       className: "chip-button chip-button--ink",
-      href: itemHref(item),
+      type: "button",
       onClick: () => open(item)
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 13
@@ -1363,21 +1276,29 @@ const __app = (() => {
     action: 'Open',
     kind: 'slides'
   }, {
-    page: 'brand',
+    page: 'decks',
     eyebrow: '02',
+    title: 'Decks',
+    copy: 'Pitch, proposal and touchpoint decks.',
+    action: 'Open',
+    kind: 'decks',
+    image: photos[6]
+  }, {
+    page: 'brand',
+    eyebrow: '03',
     title: 'Brand guidelines',
     copy: 'Visual, tone and logos.',
     action: 'Open',
     kind: 'brand',
-    image: photos[1]
+    image: 'media/photos/photo-brand-guidelines.jpg'
   }, {
     page: 'media',
-    eyebrow: '03',
+    eyebrow: '04',
     title: 'Imagery',
-    copy: 'Photos and motion in Design SharePoint.',
+    copy: 'Event and employer branding images.',
     action: 'Open',
     kind: 'media',
-    image: photos[1]
+    image: photos[5]
   }];
   function Home({
     navigate,
@@ -1437,7 +1358,7 @@ const __app = (() => {
       "aria-hidden": "true"
     }, /*#__PURE__*/React.createElement(PreviewStack, {
       sources: HOME_SLIDES_STACK_SOURCES
-    })), item.kind === 'brand' && /*#__PURE__*/React.createElement("img", {
+    })), (item.kind === 'brand' || item.kind === 'decks') && /*#__PURE__*/React.createElement("img", {
       src: item.image,
       alt: "",
       referrerPolicy: EXTERNAL_MEDIA_REFERRER
@@ -1463,12 +1384,12 @@ const __app = (() => {
       ref: featuredRef
     }, /*#__PURE__*/React.createElement("div", {
       className: "featured-master-copy"
-    }, /*#__PURE__*/React.createElement("h2", null, "PowerPoint master v4"), /*#__PURE__*/React.createElement("p", null, "Cover, framework, statement. Download the current file."), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("h2", null, "PowerPoint master template"), /*#__PURE__*/React.createElement("p", null, "Download the current file."), /*#__PURE__*/React.createElement("div", {
       className: "featured-master-actions"
-    }, /*#__PURE__*/React.createElement(ActionLink, {
-      className: "chip-button chip-button--ink",
-      href: resolveDownloadHref('PowerPoint master v4'),
-      onClick: () => download('PowerPoint master v4')
+    }, /*#__PURE__*/React.createElement(DlLink, {
+      name: "PowerPoint master v4",
+      download: download,
+      className: "chip-button chip-button--ink"
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 14
     }, thin)), " Download master"), /*#__PURE__*/React.createElement("button", {
@@ -1486,9 +1407,8 @@ const __app = (() => {
       variant: 2
     }))), /*#__PURE__*/React.createElement("section", {
       className: "call-band"
-    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Not in the library?"), /*#__PURE__*/React.createElement("p", null, "Write what you need. It lands on the brand board.")), /*#__PURE__*/React.createElement(ActionLink, {
-      className: "chip-button",
-      href: MONDAY_REQUEST_FORM_URL
+    }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h2", null, "Not in the library?"), /*#__PURE__*/React.createElement("p", null, "Write what you need. It lands on the brand board.")), /*#__PURE__*/React.createElement(RequestLink, {
+      className: "chip-button"
     }, "Open a request ", /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
       size: 14
     }, thin)))));
@@ -1614,6 +1534,7 @@ const __app = (() => {
     const active = tutorials.find(t => t.id === activeId) ?? defaultTutorial;
     const hasVideo = Boolean(active.videoSrc);
     const isYoutube = Boolean(active.videoSrc?.includes('youtube.com'));
+    const isSp = Boolean(active.sharepoint);
     const isSoon = active.typeLabel === 'Placeholder' || active.duration === 'Soon';
     const selectTutorial = tutorial => {
       if (tutorial.id === activeId) return;
@@ -1655,7 +1576,7 @@ const __app = (() => {
       className: "mono-label"
     }, "PowerPoint master v4"), /*#__PURE__*/React.createElement("strong", null, active.subtitle)), /*#__PURE__*/React.createElement("div", {
       className: "tutorial-sticky-actions"
-    }, /*#__PURE__*/React.createElement("label", {
+    }, tutorials.length > 1 && /*#__PURE__*/React.createElement("label", {
       className: "tutorial-switcher"
     }, /*#__PURE__*/React.createElement("span", {
       className: "sr-only"
@@ -1683,10 +1604,10 @@ const __app = (() => {
       className: "tutorial-switcher-soon"
     }, "Soon"), /*#__PURE__*/React.createElement(ChevronDown, _extends({
       size: 14
-    }, thin)))), /*#__PURE__*/React.createElement(ActionLink, {
-      className: "chip-button chip-button--ink",
-      href: resolveDownloadHref('PowerPoint master v4'),
-      onClick: () => download('PowerPoint master v4')
+    }, thin)))), /*#__PURE__*/React.createElement(DlLink, {
+      name: "PowerPoint master v4",
+      download: download,
+      className: "chip-button chip-button--ink"
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 14
     }, thin)), " Download master"))), /*#__PURE__*/React.createElement("div", {
@@ -1695,7 +1616,23 @@ const __app = (() => {
       className: "tutorial-video"
     }, /*#__PURE__*/React.createElement("div", {
       className: `tutorial-player${playing ? ' is-playing' : ''}${!hasVideo ? ' is-placeholder' : ''}`
-    }, !playing && /*#__PURE__*/React.createElement("button", {
+    }, isSp && /*#__PURE__*/React.createElement("a", {
+      className: "tutorial-poster",
+      href: active.videoSrc,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      "aria-label": `Watch ${active.title} on SharePoint`
+    }, /*#__PURE__*/React.createElement("img", {
+      src: "tools/tutorial-ppt-poster.png",
+      alt: "",
+      style: {
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover'
+      }
+    })), !playing && !isSp && /*#__PURE__*/React.createElement("button", {
       className: "tutorial-poster",
       type: "button",
       onClick: startWalkthrough,
@@ -1741,7 +1678,7 @@ const __app = (() => {
     }, "Watch on YouTube ", /*#__PURE__*/React.createElement(ArrowUpRight, {
       size: 16,
       strokeWidth: 1.25
-    })), hasVideo && active.videoSrc && !isYoutube && /*#__PURE__*/React.createElement("video", {
+    })), hasVideo && active.videoSrc && !isYoutube && !isSp && /*#__PURE__*/React.createElement("video", {
       key: active.id,
       ref: videoRef,
       controls: playing,
@@ -1760,7 +1697,12 @@ const __app = (() => {
       className: "tutorial-video-copy"
     }, /*#__PURE__*/React.createElement("strong", null, active.title), /*#__PURE__*/React.createElement("p", null, active.description)), /*#__PURE__*/React.createElement("span", {
       className: "asset-meta"
-    }, hasVideo ? `${isYoutube ? 'YOUTUBE' : 'MP4'} · ${active.typeLabel.toUpperCase()}` : isSoon ? `PLACEHOLDER · ${active.typeLabel.toUpperCase()}` : `GUIDE · ${active.duration.toUpperCase()}`))), /*#__PURE__*/React.createElement("section", {
+    }, isSp ? /*#__PURE__*/React.createElement(ExtLink, {
+      href: active.videoSrc,
+      className: "text-button"
+    }, "Open in SharePoint ", /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
+      size: 13
+    }, thin))) : hasVideo ? `${isYoutube ? 'YOUTUBE' : 'MP4'} · ${active.typeLabel.toUpperCase()}` : isSoon ? `PLACEHOLDER · ${active.typeLabel.toUpperCase()}` : `GUIDE · ${active.duration.toUpperCase()}`))), /*#__PURE__*/React.createElement("section", {
       className: "tutorial-notes"
     }, /*#__PURE__*/React.createElement("div", {
       className: "tutorial-col"
@@ -1822,19 +1764,19 @@ const __app = (() => {
     }, /*#__PURE__*/React.createElement("div", {
       className: "charter-frame"
     }, /*#__PURE__*/React.createElement("img", {
-      src: __R(__R('app/brand/logo-tee.png')),
+      src: "brand/logo-tee.png",
       alt: ""
     })), /*#__PURE__*/React.createElement("div", {
       className: "charter-copy"
     }, /*#__PURE__*/React.createElement("h2", null, "Logo, colour, type, icons."), /*#__PURE__*/React.createElement("ul", {
       className: "scan-list"
-    }, /*#__PURE__*/React.createElement("li", null, "Primary: blue-black, white, off-white"), /*#__PURE__*/React.createElement("li", null, "Secondary: sparingly, for diagrams"), /*#__PURE__*/React.createElement("li", null, "Type: Helvetica + Aptos Mono"), /*#__PURE__*/React.createElement("li", null, "Icons: Google Icons, thin weight")), /*#__PURE__*/React.createElement(ActionLink, {
-      className: "chip-button chip-button--ink",
-      href: resolveDownloadHref('Graphic charter v4.pdf'),
-      onClick: () => download('Graphic charter v4.pdf')
+    }, /*#__PURE__*/React.createElement("li", null, "Primary: blue-black, white, off-white"), /*#__PURE__*/React.createElement("li", null, "Secondary: sparingly, for diagrams"), /*#__PURE__*/React.createElement("li", null, "Type: Arial Nova + Aptos Mono"), /*#__PURE__*/React.createElement("li", null, "Icons: Google Icons, thin weight")), /*#__PURE__*/React.createElement(DlLink, {
+      name: "Graphic charter v4.pdf",
+      download: download,
+      className: "chip-button chip-button--ink"
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 14
-    }, thin)), " Download graphic charter \xB7 PDF"))), /*#__PURE__*/React.createElement("section", {
+    }, thin)), " Download brand guide"))), /*#__PURE__*/React.createElement("section", {
       className: "palette"
     }, /*#__PURE__*/React.createElement(BandHead, {
       title: "Primary palette."
@@ -1862,7 +1804,7 @@ const __app = (() => {
         background: colour.hex
       },
       "aria-hidden": "true"
-    }), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("b", null, colour.name), /*#__PURE__*/React.createElement("em", null, colour.hex))))), /*#__PURE__*/React.createElement(AccentDiagrams, null)))), /*#__PURE__*/React.createElement("section", {
+    }), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("b", null, colour.name), /*#__PURE__*/React.createElement("em", null, colour.hex)))))))), /*#__PURE__*/React.createElement("section", {
       className: "story-split"
     }, /*#__PURE__*/React.createElement("div", {
       className: "story-media"
@@ -1872,7 +1814,7 @@ const __app = (() => {
       referrerPolicy: EXTERNAL_MEDIA_REFERRER
     })), /*#__PURE__*/React.createElement("div", {
       className: "story-copy"
-    }, /*#__PURE__*/React.createElement("h2", null, "We grew. The brand needed warmth to match."), /*#__PURE__*/React.createElement("p", null, "Bluecrux got bigger \u2014 and the old look felt too tech-hard, too aggressive for who we are now."), /*#__PURE__*/React.createElement("p", null, "The new system brings more colour and a warmer side of us: still precise, more human."))), /*#__PURE__*/React.createElement("section", {
+    }, /*#__PURE__*/React.createElement("h2", null, "We grew. The brand needed warmth to match."), /*#__PURE__*/React.createElement("p", null, "Bluecrux got bigger, and the old look felt too tech-hard, too aggressive for who we are now."), /*#__PURE__*/React.createElement("p", null, "The new system brings more colour and a warmer side of us: still precise, more human."))), /*#__PURE__*/React.createElement("section", {
       className: "band"
     }, /*#__PURE__*/React.createElement(BandHead, {
       title: "How colour works.",
@@ -1892,7 +1834,7 @@ const __app = (() => {
       className: "specimen"
     }, /*#__PURE__*/React.createElement("p", {
       className: "specimen-display"
-    }, "Helvetica"), /*#__PURE__*/React.createElement("dl", null, /*#__PURE__*/React.createElement("dt", null, "Weight"), /*#__PURE__*/React.createElement("dd", null, "Regular"), /*#__PURE__*/React.createElement("dt", null, "Fallback"), /*#__PURE__*/React.createElement("dd", null, "Arial, sans-serif"), /*#__PURE__*/React.createElement("dt", null, "Use"), /*#__PURE__*/React.createElement("dd", null, "Headings, display, running text."))), /*#__PURE__*/React.createElement("div", {
+    }, "Arial Nova"), /*#__PURE__*/React.createElement("dl", null, /*#__PURE__*/React.createElement("dt", null, "Weight"), /*#__PURE__*/React.createElement("dd", null, "Regular"), /*#__PURE__*/React.createElement("dt", null, "Fallback"), /*#__PURE__*/React.createElement("dd", null, "Arial, Helvetica, sans-serif"), /*#__PURE__*/React.createElement("dt", null, "Use"), /*#__PURE__*/React.createElement("dd", null, "Headings, display, running text."))), /*#__PURE__*/React.createElement("div", {
       className: "specimen"
     }, /*#__PURE__*/React.createElement("p", {
       className: "specimen-mono"
@@ -2060,32 +2002,6 @@ const __app = (() => {
       className: "ai-prompt-note"
     }, item.note));
   }
-  function AiLibrary({
-    openTutorial
-  }) {
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageIntro, {
-      title: "AI library.",
-      copy: "Copy engine and the AI-for-brand tutorial \u2014 with Bluecrux guardrails built in."
-    }), /*#__PURE__*/React.createElement("section", {
-      className: "charter-download charter-download--tone ai-copy-section"
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "charter-copy"
-    }, /*#__PURE__*/React.createElement("span", {
-      className: "mono-label ai-copy-eyebrow"
-    }, "Start here"), /*#__PURE__*/React.createElement("h2", null, "Write with the copy engine."), /*#__PURE__*/React.createElement("p", {
-      className: "ai-copy-lead"
-    }, "The fastest on-brand first draft \u2014 same custom GPT as Tone of voice."), /*#__PURE__*/React.createElement("ul", {
-      className: "scan-list"
-    }, /*#__PURE__*/React.createElement("li", null, "Focused \xB7 Approachable \xB7 Simple"), /*#__PURE__*/React.createElement("li", null, "Verbal charter stays the source of truth"), /*#__PURE__*/React.createElement("li", null, "Escalate to brand when the line has to ship public")), /*#__PURE__*/React.createElement("button", {
-      className: "text-button",
-      type: "button",
-      onClick: () => openTutorial('ai-for-brand')
-    }, "How to use AI for Brand ", /*#__PURE__*/React.createElement(ArrowRight, _extends({
-      size: 14
-    }, thin)))), /*#__PURE__*/React.createElement(CopyEnginePanel, {
-      hero: true
-    })));
-  }
   function BrandTone({
     download
   }) {
@@ -2095,10 +2011,10 @@ const __app = (() => {
       className: "charter-copy"
     }, /*#__PURE__*/React.createElement("h2", null, "How Bluecrux writes."), /*#__PURE__*/React.createElement("ul", {
       className: "scan-list"
-    }, /*#__PURE__*/React.createElement("li", null, "Focused \xB7 Approachable \xB7 Simple"), /*#__PURE__*/React.createElement("li", null, "Build lines: moment \u2192 friction \u2192 change \u2192 landing"), /*#__PURE__*/React.createElement("li", null, "Prefer facts and outcomes over claims")), /*#__PURE__*/React.createElement(ActionLink, {
-      className: "chip-button chip-button--ink",
-      href: resolveDownloadHref('Verbal charter v1.pdf'),
-      onClick: () => download('Verbal charter v1.pdf')
+    }, /*#__PURE__*/React.createElement("li", null, "Focused \xB7 Approachable \xB7 Simple"), /*#__PURE__*/React.createElement("li", null, "Build lines: moment \u2192 friction \u2192 change \u2192 landing"), /*#__PURE__*/React.createElement("li", null, "Prefer facts and outcomes over claims")), /*#__PURE__*/React.createElement(DlLink, {
+      name: "Verbal charter v1.pdf",
+      download: download,
+      className: "chip-button chip-button--ink"
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 14
     }, thin)), " Download verbal charter \xB7 PDF")), /*#__PURE__*/React.createElement(CopyEnginePanel, null)), /*#__PURE__*/React.createElement("section", {
@@ -2243,7 +2159,7 @@ const __app = (() => {
     bg: '#000021',
     color: '#FFFFFF',
     mark: 'logotype',
-    image: __R('app/brand/ops-floor.jpg')
+    image: 'brand/ops-floor.jpg'
   }];
   const logoUsages = [{
     key: 'lockup',
@@ -2312,9 +2228,9 @@ const __app = (() => {
       referrerPolicy: EXTERNAL_MEDIA_REFERRER
     }), variant.mark === 'monogram' ? /*#__PURE__*/React.createElement(Monogram, null) : /*#__PURE__*/React.createElement(Logo, null)), /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
       className: "mono-label"
-    }, variant.name), /*#__PURE__*/React.createElement("small", null, variant.files)), /*#__PURE__*/React.createElement(ActionLink, {
-      href: resolveDownloadHref(`${variant.name} logo`),
-      onClick: () => download(`${variant.name} logo`)
+    }, variant.name), /*#__PURE__*/React.createElement("small", null, variant.files)), /*#__PURE__*/React.createElement(DlLink, {
+      name: `${variant.name} logo`,
+      download: download
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 13
     }, thin)), " Download"))))), /*#__PURE__*/React.createElement("section", {
@@ -2356,13 +2272,13 @@ const __app = (() => {
       "aria-label": `${brand.name} logo`
     }, /*#__PURE__*/React.createElement("img", {
       className: "product-logo-mark",
-      src: __R(`app/brand/logo-${brand.slug}.svg`),
+      src: `brand/logo-${brand.slug}.svg`,
       alt: ""
     })), /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
       className: "mono-label"
-    }, brand.name), /*#__PURE__*/React.createElement("small", null, brand.files)), /*#__PURE__*/React.createElement(ActionLink, {
-      href: resolveDownloadHref(`${brand.name} logo`),
-      onClick: () => download(`${brand.name} logo`)
+    }, brand.name), /*#__PURE__*/React.createElement("small", null, brand.files)), /*#__PURE__*/React.createElement(DlLink, {
+      name: `${brand.name} logo`,
+      download: download
     }, /*#__PURE__*/React.createElement(Download, _extends({
       size: 13
     }, thin)), " Download")))))), /*#__PURE__*/React.createElement("section", {
@@ -2410,10 +2326,164 @@ const __app = (() => {
       }, /*#__PURE__*/React.createElement(Logo, null));
     })))))));
   }
+  /** Deck links point to Design SharePoint until file-level URLs are provided. */
+  const DECKS_URL = SHAREPOINT_DESIGN_SITE;
+  const deckGroups = [{
+    id: 'intro',
+    title: 'Introducing Bluecrux',
+    rows: [{
+      title: 'Pitch script - No slides',
+      url: 'https://upcbe1046076.sharepoint.com/:b:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/60.%20Go-To-Market%20Assets/00.%20General/Bluecrux%20Intro%20-%20No%20slides.pdf?',
+      updated: 'Sept 1, 2026'
+    }, {
+      title: 'Pitch Video',
+      image: 'decks/pitch-video.png',
+      full: true,
+      url: 'https://vimeo.com/1222911743/adc1e14b31',
+      note: '(also read the script for additional pointers and more context!)',
+      updated: 'Sept 1, 2026'
+    }, {
+      title: 'Intro deck: Short version',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/60.%20Go-To-Market%20Assets/00.%20General/GTM%20-%20Intro%20-%20Short%20version.pptx?download=1',
+      updated: 'Sept 1, 2026'
+    }, {
+      title: 'Intro deck: Standard version',
+      image: 'decks/intro-standard.png',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/60.%20Go-To-Market%20Assets/00.%20General/GTM-Intro-Long%20version.pptx?download=1',
+      updated: 'Sept 1, 2026'
+    }]
+  }, {
+    id: 'commercial',
+    title: 'Commercial assets',
+    rows: [{
+      title: 'PowerPoint Template | Timesaver',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/10.%20Commercial%20library/Bluecrux%20-%20Template%20Final.pptx?d=w703a16eafd804d08aa0d2c8e10037627&csf=1&web=1&e=kMbbmO'
+    }, {
+      title: 'Customer case Library',
+      image: 'decks/customer-case-library.png',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/40.%20Client%20cases/202609-%20Client%20case%20Library%20-%20V1.0.pptx?d=w43ebbb90b1614afd99c92d0045a5cf37&csf=1&web=1&e=pE2ccU'
+    }, {
+      title: 'BC Profiles',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/_layouts/15/Doc.aspx?sourcedoc=%7b62FF2527-5A4B-4990-9F45-5E8D8312A460%7d&file=202601_BC%20Profiles.pptx&action=edit&mobileredirect=true'
+    }, {
+      title: 'BC CVs',
+      url: 'https://upcbe1046076.sharepoint.com/sites/BC_20.Thatsus/Shared%20Documents/Forms/AllItems.aspx?csf=1&web=1&e=sCpnhA&CID=439bc030-4103-4f2e-8018-b9ff0e5c5468&FolderCTID=0x01200034CCD0A580F6DB41874D05FF13BA7BD6&id=/sites/BC_20.Thatsus/Shared%20Documents/10.HR%20General/20.%20BeeCees%20-%20General%20information/20.%20Indiv%20CVs'
+    }, {
+      title: 'Go-To-Market Assets',
+      url: 'https://upcbe1046076.sharepoint.com/sites/MarketingHub/SitePages/go-to-market-hub.aspx',
+      sub: 'Capability, industry & technology decks',
+      strong: true
+    }]
+  }, {
+    id: 'consulting',
+    title: 'Consulting Touchpoints',
+    label: 'Proposal Library',
+    rows: [{
+      title: 'Consulting Proposal Library General',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/10.%20Commercial%20library/01.%20General/CON_1A_Consulting%20proposal%20library_GENERAL_Arial_Final_20241128%20.pptx?d=w41240202fb5b4138a5d75c6bc6852443&csf=1&web=1&e=BPz6Vr'
+    }, {
+      title: 'Budget template',
+      url: 'https://upcbe1046076.sharepoint.com/:x:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/10.%20Commercial%20library/01.%20General/2026_Budget%20template.xlsx?d=wfd80f284843c4764bcbaa1ecc3a44b03&csf=1&web=1&e=jhYQWc'
+    }, {
+      title: 'Proposal Disclaimer slide',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/10.%20Commercial%20library/01.%20General/202610_proposal%20disclaimer%20slide.pptx?d=w024cd47aac3f4395950a603e9b3fc918&csf=1&web=1&e=5JRex1',
+      note: '(to be used in every proposal)'
+    }, {
+      title: 'RFP intake template',
+      url: 'https://upcbe1046076.sharepoint.com/:x:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/10.%20Commercial%20library/01.%20General/2026-BC-Intake%20Proposal%20RFP%20TEMPLATE.xlsx?d=wc22c652087624193a92493918077631e&csf=1&web=1&e=9aQLHe'
+    }, {
+      title: 'RFP Q&A template',
+      url: 'https://upcbe1046076.sharepoint.com/:x:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/10.%20Commercial%20library/01.%20General/Q%26A%20Bluecrux%20Template.xlsx?d=w2c3d25d164d142869006fa4f50290faa&csf=1&web=1&e=ElTwu5'
+    }, {
+      title: 'Supply Chain Data Intelligence (SCDI) proposal deck',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/10.%20Commercial%20library/01.%20General/260828a1-BX-Supply%20Chain%20Data%20Intelligence%20(SCDI)%20proposal%20deck.pptx?d=w8971d0b1656741feb0f7b78a833b9072&csf=1&web=1&e=VYYKRw'
+    }, {
+      title: 'Change Management proposal deck'
+    }, {
+      title: 'Clinical SC intro deck'
+    }]
+  }, {
+    id: 'axon',
+    title: 'Axon Touchpoints',
+    rows: [{
+      title: 'Axon introduction',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/10.%20Commercial%20library/NEW_Axon_Intro_Deck_2025.pptx',
+      updated: 'Oct 31, 2025'
+    }]
+  }, {
+    id: 'binocs',
+    title: 'Binocs Touchpoints',
+    rows: [{
+      title: 'Introduction to Binocs for QC',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/10.%20Commercial%20library/BIN_5_Intro%20to%20Binocs%20QC_2026.pptx',
+      updated: '2025'
+    }, {
+      title: 'Introduction to Binocs for CGT',
+      url: 'https://upcbe1046076.sharepoint.com/:p:/r/sites/BC_20.Thatsus/Shared%20Documents/20.Sales%20and%20Marketing/30.%20Sales%20tools/10.%20Commercial%20library/BIN_16_Intro%20to%20Binocs%20CGT_2026.pptx',
+      updated: '2025'
+    }]
+  }];
+  const DECK_STACKS = [MASTER_STACK_SOURCES, PROPOSAL_STACK_SOURCES, HOME_SLIDES_STACK_SOURCES];
+  function deckHref(url) {
+    if (!url || !/sharepoint\.com\/:[a-z]:\/r\//.test(url)) return null;
+    const u = new URL(url);
+    return u.origin + u.pathname.replace(/^\/:[a-z]:\/r\//, '/') + '?download=1';
+  }
+  function DecksPage() {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageIntro, {
+      title: "Decks.",
+      copy: "Pitch material, commercial assets and touchpoint decks for consulting, Axon and Binocs. Files open in Design SharePoint."
+    }), /*#__PURE__*/React.createElement("div", {
+      className: "decks"
+    }, deckGroups.map(group => /*#__PURE__*/React.createElement("section", {
+      className: "decks-group",
+      key: group.id,
+      "aria-label": group.title
+    }, /*#__PURE__*/React.createElement("header", {
+      className: "decks-head"
+    }, /*#__PURE__*/React.createElement("h2", null, group.title), group.label && /*#__PURE__*/React.createElement("span", {
+      className: "mono-label"
+    }, group.label)), /*#__PURE__*/React.createElement("div", {
+      className: "decks-grid"
+    }, group.rows.map((row, i) => /*#__PURE__*/React.createElement("article", {
+      className: "asset-card deck-card",
+      key: row.title
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "asset-visual"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "asset-slide-frame",
+      "aria-hidden": "true"
+    }, row.full ? /*#__PURE__*/React.createElement("img", {
+      src: row.image,
+      alt: "",
+      style: {
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover'
+      }
+    }) : /*#__PURE__*/React.createElement(PreviewStack, {
+      sources: row.image ? [...DECK_STACKS[(i + group.id.length) % DECK_STACKS.length].slice(0, 2), row.image] : DECK_STACKS[(i + group.id.length) % DECK_STACKS.length]
+    }))), /*#__PURE__*/React.createElement("div", {
+      className: "deck-card-body"
+    }, /*#__PURE__*/React.createElement("h3", null, row.title), row.note && /*#__PURE__*/React.createElement("em", null, row.note), row.sub && /*#__PURE__*/React.createElement("small", null, row.sub), row.updated && /*#__PURE__*/React.createElement("span", {
+      className: "decks-updated"
+    }, "Updated ", row.updated)), deckHref(row.url) ? /*#__PURE__*/React.createElement(ExtLink, {
+      href: deckHref(row.url),
+      className: "chip-button chip-button--ink"
+    }, "Download") : /*#__PURE__*/React.createElement(ExtLink, {
+      href: row.url ?? DECKS_URL,
+      className: "chip-button chip-button--ink"
+    }, "Open now"))))))));
+  }
+  function openExternal(url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
   function ImageryPage() {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageIntro, {
       title: "Imagery.",
-      copy: "Approved photography and motion live in Design SharePoint. Open a collection to browse and download \u2014 confirm usage rights before any external publish."
+      copy: "Explore our collection of employee headshots, employer branding photography and stock images, ready for your next presentation, post or project."
     }), /*#__PURE__*/React.createElement("p", {
       className: "library-section-hint imagery-sp-hint"
     }, /*#__PURE__*/React.createElement("span", {
@@ -2421,31 +2491,32 @@ const __app = (() => {
     }, "Design SharePoint"), "Files are not stored in this hub. You need a Bluecrux Microsoft account to open collections."), /*#__PURE__*/React.createElement("section", {
       className: "imagery-collections",
       "aria-label": "Imagery collections"
-    }, imageryCollections.map(item => /*#__PURE__*/React.createElement("article", {
+    }, imageryCollections.map((item, i) => /*#__PURE__*/React.createElement("article", {
       className: "imagery-card",
       key: item.id
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "imagery-card-swatch",
-      style: {
-        background: item.accent
-      },
-      "aria-hidden": "true"
-    }), /*#__PURE__*/React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("a", {
+      className: "imagery-card-media",
+      href: item.sharePointUrl,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      "aria-label": `Open ${item.title} in SharePoint`
+    }, /*#__PURE__*/React.createElement("img", {
+      src: item.image,
+      alt: "",
+      loading: "lazy"
+    }), /*#__PURE__*/React.createElement("span", {
+      className: "imagery-card-index"
+    }, "0", i + 1)), /*#__PURE__*/React.createElement("div", {
       className: "imagery-card-body"
     }, /*#__PURE__*/React.createElement("span", {
       className: "mono-label"
     }, item.meta), /*#__PURE__*/React.createElement("h3", null, item.title), /*#__PURE__*/React.createElement("p", null, item.description), /*#__PURE__*/React.createElement("div", {
       className: "imagery-card-actions"
-    }, /*#__PURE__*/React.createElement(ActionLink, {
-      className: "chip-button chip-button--ink",
-      href: item.sharePointUrl
+    }, /*#__PURE__*/React.createElement(ExtLink, {
+      href: item.sharePointUrl,
+      className: "chip-button chip-button--ink"
     }, "Open in SharePoint ", /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
       size: 13
-    }, thin))), item.youtubeUrl && /*#__PURE__*/React.createElement(ActionLink, {
-      className: "text-button text-button--mark",
-      href: item.youtubeUrl
-    }, "Brand film on YouTube ", /*#__PURE__*/React.createElement(ArrowRight, _extends({
-      size: 14
     }, thin)))))))));
   }
   const faqItems = [{
@@ -2492,8 +2563,8 @@ const __app = (() => {
     }]
   }, {
     id: 'fonts',
-    question: 'Where do I get Helvetica and Aptos Mono?',
-    answer: 'Helvetica is the display and body face; Aptos Mono is for labels and meta. Specs live in Brand guidelines. Helvetica ships with macOS (use Arial on Windows if needed); Aptos Mono comes with Microsoft 365. Do not substitute decorative lookalikes in client work.',
+    question: 'Where do I get Arial Nova and Aptos Mono?',
+    answer: 'Arial Nova is the display and body face; Aptos Mono is for labels and meta. Specs live in Brand guidelines. Arial Nova is available in Microsoft 365 (use Arial if it is missing); Aptos Mono comes with Microsoft 365. Do not substitute decorative lookalikes in client work.',
     links: [{
       label: 'Brand guidelines',
       page: 'brand',
@@ -2502,44 +2573,19 @@ const __app = (() => {
   }, {
     id: 'tone-copy',
     question: 'How should we write — and what is the copy engine?',
-    answer: 'Tone is Focused, Approachable, Simple. Prefer facts and outcomes over claims. The copy engine (custom GPT) lives on Tone of voice and in the AI library; the verbal charter stays the source of truth.',
+    answer: 'Tone is Focused, Approachable, Simple. Prefer facts and outcomes over claims. The copy engine (custom GPT) lives on Tone of voice; the verbal charter stays the source of truth.',
     links: [{
       label: 'Tone of voice',
       page: 'brand',
       brandTab: 'tone'
-    }, {
-      label: 'AI library',
-      page: 'ai'
-    }]
-  }, {
-    id: 'ai-library',
-    question: 'Where are AI prompts and the AI-for-brand tutorial?',
-    answer: 'AI library has the ChatGPT copy engine and a link to Tutorial 04 · How to use AI for Brand.',
-    links: [{
-      label: 'AI library',
-      page: 'ai'
-    }, {
-      label: 'Tutorial',
-      page: 'powerpoint'
     }]
   }, {
     id: 'missing-file',
     question: 'Something is missing — what do I do?',
-    answer: 'Search first, then check Resources for the full index. If it still is not there, use Request a task — it opens the Monday form. Add context, deadline and who will see the work. Submissions land on the Brand & Design board.',
+    answer: 'Search first. If it still is not there, use Request a task — it opens the Monday form. Add context, deadline and who will see the work. Submissions land on the Brand & Design board.',
     links: [{
-      label: 'Resources',
-      page: 'library'
-    }, {
       label: 'Request a task',
       href: MONDAY_REQUEST_FORM_URL
-    }]
-  }, {
-    id: 'full-index',
-    question: 'Where is the full list of approved files?',
-    answer: 'Resources is the complete index — templates, collateral (one-pagers, brochures), brand files and imagery collections. Downloads and imagery open Design SharePoint. Prefer Templates, Brand guidelines or Imagery when you already know the section; use the Collateral filter for sales and comms PDFs.',
-    links: [{
-      label: 'Resources',
-      page: 'library'
     }]
   }];
   function Faq({
@@ -2547,7 +2593,10 @@ const __app = (() => {
     openBrand
   }) {
     const runLink = link => {
-      if (link.href) return; // handled natively by the <a href>
+      if (link.href) {
+        window.open(link.href, '_blank', 'noopener,noreferrer');
+        return;
+      }
       if (link.brandTab) {
         openBrand(link.brandTab);
         return;
@@ -2570,10 +2619,16 @@ const __app = (() => {
       className: "faq-body"
     }, /*#__PURE__*/React.createElement("h2", null, item.question), /*#__PURE__*/React.createElement("p", null, item.answer), item.links && item.links.length > 0 && /*#__PURE__*/React.createElement("div", {
       className: "faq-links"
-    }, item.links.map(link => /*#__PURE__*/React.createElement(ActionLink, {
+    }, item.links.map(link => link.href ? /*#__PURE__*/React.createElement(ExtLink, {
       key: `${item.id}-${link.label}`,
-      className: "text-button",
       href: link.href,
+      className: "text-button"
+    }, link.label, " ", /*#__PURE__*/React.createElement(ArrowRight, _extends({
+      size: 14
+    }, thin))) : /*#__PURE__*/React.createElement("button", {
+      key: `${item.id}-${link.label}`,
+      type: "button",
+      className: "text-button",
       onClick: () => runLink(link)
     }, link.label, " ", /*#__PURE__*/React.createElement(ArrowRight, _extends({
       size: 14
@@ -2621,41 +2676,17 @@ const __app = (() => {
         haystack: 'tutorial powerpoint notes master how to usage walkthrough ai brand chatgpt prompts',
         run: () => navigate('powerpoint')
       }, {
-        id: 'page-library',
-        title: 'Resources',
-        label: 'Page',
-        haystack: 'library resources all files approved index collateral one-pagers brochures',
-        run: () => navigate('library')
-      }, {
-        id: 'page-resources',
-        title: 'Collateral',
-        label: 'Resources',
-        haystack: 'resources collateral one-pager onepager brochure leave-behind whitepaper pdf sales',
-        run: () => navigate('resources')
-      }, {
         id: 'page-faq',
         title: 'FAQ',
         label: 'Page',
         haystack: 'faq questions answers help how to logo fonts rights request',
         run: () => navigate('faq')
       }, {
-        id: 'page-ai',
-        title: 'AI library',
-        label: 'Page',
-        haystack: 'ai library chatgpt copy engine prompts midjourney firefly image gen illustration charts diagrams how to use ai for brand',
-        run: () => navigate('ai')
-      }, {
-        id: 'page-tools',
-        title: 'Tools',
-        label: 'Page',
-        haystack: 'tools external links apps',
-        run: () => navigate('tools')
-      }, {
         id: 'page-request',
         title: 'Request a task',
         label: 'Monday',
         haystack: 'request task ask brand team monday',
-        href: MONDAY_REQUEST_FORM_URL
+        run: openRequestForm
       }, {
         id: 'page-logos',
         title: 'Logos',
@@ -2670,9 +2701,9 @@ const __app = (() => {
         run: () => openBrand('visual')
       }, {
         id: 'alias-type',
-        title: 'Helvetica / Aptos Mono',
+        title: 'Arial Nova / Aptos Mono',
         label: 'Brand · Type',
-        haystack: 'helvetica aptos mono typography type font headings labels die grotesk riforma',
+        haystack: 'arial nova helvetica aptos mono typography type font headings labels die grotesk riforma',
         run: () => openBrand('visual')
       }, {
         id: 'alias-tone',
@@ -2685,7 +2716,7 @@ const __app = (() => {
         title: 'Copy engine',
         label: 'AI',
         haystack: 'copy engine custom gpt chatgpt draft writing tone',
-        run: () => navigate('ai')
+        run: () => openBrand('tone')
       }, {
         id: 'alias-film',
         title: 'Motion & brand film',
@@ -2698,7 +2729,6 @@ const __app = (() => {
         title: item.title,
         label: sectionLabels[item.section],
         haystack: `${item.title} ${item.description} ${sectionLabels[item.section]} ${item.templateKind ?? ''} ${item.action}`,
-        href: itemHref(item),
         run: () => openItem(item)
       }));
       return [...pages, ...items];
@@ -2706,7 +2736,7 @@ const __app = (() => {
     const results = useMemo(() => {
       const q = query.trim().toLowerCase();
       if (!q) {
-        const startIds = ['page-templates', 'page-brand', 'page-media', 'page-tutorial', 'page-library', 'page-faq', 'page-ai'];
+        const startIds = ['page-templates', 'page-brand', 'page-media', 'page-tutorial', 'page-faq'];
         return startIds.map(id => entries.find(entry => entry.id === id)).filter(entry => Boolean(entry));
       }
       return entries.filter(entry => `${entry.title} ${entry.label} ${entry.haystack}`.toLowerCase().includes(q));
@@ -2735,7 +2765,7 @@ const __app = (() => {
       return scored;
     }, [entries, query, results.length]);
     const runAndClose = run => {
-      if (run) run();
+      run();
       close();
     };
     return /*#__PURE__*/React.createElement("div", {
@@ -2771,9 +2801,8 @@ const __app = (() => {
       className: "mono-label"
     }, query ? `${results.length} result${results.length === 1 ? '' : 's'}` : 'Start here'), results.length > 0 ? /*#__PURE__*/React.createElement("div", {
       className: "search-results"
-    }, results.slice(0, 8).map((item, index) => /*#__PURE__*/React.createElement(ActionLink, {
+    }, results.slice(0, 8).map((item, index) => /*#__PURE__*/React.createElement("button", {
       key: item.id,
-      href: item.href,
       onClick: () => runAndClose(item.run),
       disabled: closing
     }, /*#__PURE__*/React.createElement("span", null, String(index + 1).padStart(2, '0')), /*#__PURE__*/React.createElement("span", null, /*#__PURE__*/React.createElement("small", null, item.label), /*#__PURE__*/React.createElement("h3", null, item.title)), /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
@@ -2786,17 +2815,16 @@ const __app = (() => {
       className: "search-suggest"
     }, /*#__PURE__*/React.createElement("span", {
       className: "mono-label"
-    }, "Did you mean"), suggestions.map(item => /*#__PURE__*/React.createElement(ActionLink, {
+    }, "Did you mean"), suggestions.map(item => /*#__PURE__*/React.createElement("button", {
       key: item.id,
-      href: item.href,
+      type: "button",
       onClick: () => runAndClose(item.run),
       disabled: closing
     }, /*#__PURE__*/React.createElement("small", null, item.label), /*#__PURE__*/React.createElement("strong", null, item.title)))), /*#__PURE__*/React.createElement("p", {
       className: "search-empty-hint"
-    }, "Try a shorter word, or open a request.")), /*#__PURE__*/React.createElement(ActionLink, {
+    }, "Try a shorter word, or open a request.")), /*#__PURE__*/React.createElement("button", {
       className: "text-button",
-      href: MONDAY_REQUEST_FORM_URL,
-      onClick: close,
+      onClick: () => runAndClose(openRequestForm),
       disabled: closing
     }, "Not here? Open a request ", /*#__PURE__*/React.createElement(ArrowRight, _extends({
       size: 14
@@ -2807,33 +2835,25 @@ const __app = (() => {
     index: '00',
     copy: 'PowerPoint and Word.'
   }, {
-    page: 'brand',
+    page: 'decks',
     index: '01',
+    copy: 'Pitch, proposal and touchpoint decks.'
+  }, {
+    page: 'brand',
+    index: '02',
     copy: 'Visual identity, tone and logos.'
   }, {
     page: 'media',
-    index: '02',
+    index: '03',
     copy: 'Photography and motion in Design SharePoint.'
   }, {
     page: 'powerpoint',
-    index: '03',
-    copy: 'PowerPoint master and AI-for-brand guide.'
-  }, {
-    page: 'library',
     index: '04',
-    copy: 'Templates, collateral, brand and imagery.'
+    copy: 'PowerPoint master tutorial.'
   }, {
     page: 'faq',
     index: '05',
     copy: 'Short answers to common questions.'
-  }, {
-    page: 'ai',
-    index: '06',
-    copy: 'Copy engine, AI tutorial.'
-  }, {
-    page: 'tools',
-    index: '07',
-    copy: 'External tools, one click away.'
   }];
   // Add external tools here: { id, title, copy, href }
   const toolItems = [{
@@ -2841,50 +2861,34 @@ const __app = (() => {
     title: 'Social Studio',
     copy: 'Build on-brand social visuals: LinkedIn posts, carousels and other formats, with headline, quote, stats or list layouts, brand pictures and colours. Preview as artwork, mockup or animation, then export.',
     cta: 'Open Social Studio',
+    image: 'tools/social-studio.png',
     href: 'https://social-studio-wine.vercel.app'
   }];
   function ToolPreview({
     href,
-    title
+    title,
+    image
   }) {
-    const W = 1440,
-      H = 900;
-    const box = useRef(null);
-    const [scale, setScale] = useState(0.4);
-    useEffect(() => {
-      if (!box.current) return;
-      const ro = new ResizeObserver(([e]) => setScale(e.contentRect.width / W));
-      ro.observe(box.current);
-      return () => ro.disconnect();
-    }, []);
     return /*#__PURE__*/React.createElement("a", {
-      ref: box,
       href: href,
       target: "_blank",
       rel: "noopener noreferrer",
       "aria-label": `Open ${title}`,
       style: {
         display: 'block',
-        position: 'relative',
         width: '100%',
-        aspectRatio: `${W} / ${H}`,
         overflow: 'hidden',
         background: '#faf7f5',
         border: '1px solid rgba(0,0,33,.14)',
         marginBottom: 20
       }
-    }, /*#__PURE__*/React.createElement("iframe", {
-      src: href,
-      title: `${title} preview`,
-      loading: "lazy",
-      tabIndex: -1,
+    }, /*#__PURE__*/React.createElement("img", {
+      src: image,
+      alt: `${title} interface`,
       style: {
-        width: W,
-        height: H,
-        border: 0,
-        transform: `scale(${scale})`,
-        transformOrigin: '0 0',
-        pointerEvents: 'none'
+        display: 'block',
+        width: '100%',
+        height: 'auto'
       }
     }));
   }
@@ -2905,7 +2909,8 @@ const __app = (() => {
       className: "faq-body"
     }, /*#__PURE__*/React.createElement(ToolPreview, {
       href: item.href,
-      title: item.title
+      title: item.title,
+      image: item.image
     }), /*#__PURE__*/React.createElement("h2", null, item.title), /*#__PURE__*/React.createElement("p", null, item.copy), /*#__PURE__*/React.createElement("div", {
       className: "faq-links"
     }, /*#__PURE__*/React.createElement("a", {
@@ -2963,10 +2968,8 @@ const __app = (() => {
       disabled: closing
     }, "Search ", /*#__PURE__*/React.createElement(Search, _extends({
       size: 13
-    }, thin))), /*#__PURE__*/React.createElement(ActionLink, {
-      className: "chip-button",
-      href: MONDAY_REQUEST_FORM_URL,
-      disabled: closing
+    }, thin))), /*#__PURE__*/React.createElement(RequestLink, {
+      className: "chip-button"
     }, "Request a task ", /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
       size: 13
     }, thin))))));
@@ -3047,10 +3050,10 @@ const __app = (() => {
       if (menuOpen) closeMenu();
       if (searchOpen) closeSearch();
     };
-    const download = (name, url) => {
-      const href = resolveDownloadHref(name, url);
+    const download = (name, url, fromLink) => {
+      const href = resolveHref(name, url);
       if (href) {
-        // Navigation happens via the <a href> that was clicked; just confirm.
+        if (!fromLink) window.open(href, '_blank');
         setToast(`${name} · opening SharePoint`);
         window.setTimeout(() => setToast(''), 2800);
         return;
@@ -3076,7 +3079,7 @@ const __app = (() => {
       navigate('media');
     };
     const openItem = item => {
-      if (item.action === 'Download') {
+      if (item.action === 'Download' || item.action === 'Open now') {
         download(item.title, item.downloadUrl);
         return;
       }
@@ -3117,9 +3120,8 @@ const __app = (() => {
       onClick: openSearch
     }, "Search ", /*#__PURE__*/React.createElement(Search, _extends({
       size: 13
-    }, thin))), /*#__PURE__*/React.createElement(ActionLink, {
-      className: "header-link header-link--underline header-link--request",
-      href: MONDAY_REQUEST_FORM_URL
+    }, thin))), /*#__PURE__*/React.createElement(RequestLink, {
+      className: "header-link header-link--underline header-link--request"
     }, "Request a task"), /*#__PURE__*/React.createElement("button", {
       className: "header-link",
       onClick: openMenu
@@ -3127,15 +3129,10 @@ const __app = (() => {
       navigate: navigate,
       openSearch: openSearch,
       download: download
-    }), (page === 'library' || page === 'resources') && /*#__PURE__*/React.createElement(Library, {
-      key: page,
-      openItem: openItem,
-      openTutorial: () => navigate('powerpoint'),
-      initialFilter: page === 'resources' ? 'resources' : 'all'
     }), page === 'templates' && /*#__PURE__*/React.createElement(Templates, {
       navigate: navigate,
       openItem: openItem
-    }), page === 'powerpoint' && /*#__PURE__*/React.createElement(PowerPoint, {
+    }), page === 'decks' && /*#__PURE__*/React.createElement(DecksPage, null), page === 'powerpoint' && /*#__PURE__*/React.createElement(PowerPoint, {
       download: download,
       initialTutorialId: tutorialId,
       key: tutorialId ?? 'default'
@@ -3146,17 +3143,13 @@ const __app = (() => {
     }), page === 'media' && /*#__PURE__*/React.createElement(ImageryPage, null), page === 'faq' && /*#__PURE__*/React.createElement(Faq, {
       navigate: navigate,
       openBrand: openBrand
-    }), page === 'ai' && /*#__PURE__*/React.createElement(AiLibrary, {
-      openTutorial: openTutorial
-    }), page === 'tools' && /*#__PURE__*/React.createElement(Tools, null)), /*#__PURE__*/React.createElement("footer", {
+    })), /*#__PURE__*/React.createElement("footer", {
       className: "site-footer"
     }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("span", {
       className: "footer-brand"
     }, /*#__PURE__*/React.createElement(Logo, null), /*#__PURE__*/React.createElement("span", {
       className: "brand-tag"
-    }, "/ Brand library")), /*#__PURE__*/React.createElement("p", null, "Internal use only \xB7 Graphic charter v4 \xB7 Verbal charter v1")), /*#__PURE__*/React.createElement(ActionLink, {
-      href: MONDAY_REQUEST_FORM_URL
-    }, "Contact the brand team ", /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
+    }, "/ Brand library")), /*#__PURE__*/React.createElement("p", null, "Internal use only \xB7 Graphic charter v4 \xB7 Verbal charter v1")), /*#__PURE__*/React.createElement(RequestLink, null, "Contact the brand team ", /*#__PURE__*/React.createElement(ArrowUpRight, _extends({
       size: 14
     }, thin)))), searchOpen && /*#__PURE__*/React.createElement(SearchOverlay, {
       close: closeSearch,
